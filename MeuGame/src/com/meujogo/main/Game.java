@@ -1,11 +1,12 @@
 package com.meujogo.main;
 import java.awt.Canvas;
-import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.KeyEvent;
+import java.awt.Point;
 import java.awt.image.BufferStrategy;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+
+import com.meujogo.main.resources.Bezier;
 
 public class Game extends Canvas implements Runnable {
 
@@ -14,12 +15,15 @@ public class Game extends Canvas implements Runnable {
 	private ExecutorService executor;
 	public static int width;
 	public static int height;
+	private Bezier bezier;
 	
 	public Game(int w, int h){
 		
 		executor = Executors.newFixedThreadPool(1);
 		width = w;
 		height = h;
+		
+		bezier = new Bezier(new Point(0,100),new Point(50,200), new Point(100,100), 3 );
 	}
 	
 	@Override
@@ -93,8 +97,7 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		
 		/////////////////////////////////
-		//back.render(g, 0, 0);
-		//sprite.render(g, sX, sY);
+		bezier.render(g);
 		
 		////////////////////////////////
 		
