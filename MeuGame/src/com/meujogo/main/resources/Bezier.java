@@ -22,6 +22,7 @@ public class Bezier {
 		suave = pontos;
 		
 		retaR = new ArrayList<Point> ();
+		processa(suave);
 	}
 	
 	private void processa(int pontos){
@@ -37,12 +38,14 @@ public class Bezier {
 		}
 	}
 	
+	
 	public void render(Graphics g){
-		processa(suave);
+		
 		
 		Point point = new Point();
-		point = retaR.get(1);
-		System.out.println(Integer.toString((int)point.getX())+"  "+Integer.toString(point.y));
-		g.drawLine((int)point.getX(), (int)point.getY(),(int) point.getX()+40, (int)point.getX()+40);
+		for(int i=0; i<retaR.size()-1; i++){
+			point = retaR.get(1);
+			g.drawLine((int)point.getX(), (int)point.getY(),(int) point.getX()+40, (int)point.getX()+40);
+		}
 	}
 }
