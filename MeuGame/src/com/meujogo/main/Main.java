@@ -7,15 +7,15 @@ import javax.swing.JFrame;
 public class Main extends JFrame{
 	
 	Game game;
-	private static int WIDTH = 800;
-	private static int HEIGHT = 600;
+	private static int WIDTH = 600;
+	private static int HEIGHT = WIDTH/4*3;
 	public static Main INSTANCE;
 	
 	public Main(){
 		INSTANCE = this;
 		setSize(WIDTH,HEIGHT);
 		setResizable(false);
-		setLocation(600,400);
+		setLocation(600,300);
 		game = new Game(WIDTH,HEIGHT);
 		addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent ev){
