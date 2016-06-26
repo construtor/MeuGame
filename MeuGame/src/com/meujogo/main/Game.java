@@ -1,5 +1,6 @@
 package com.meujogo.main;
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.image.BufferStrategy;
@@ -23,7 +24,7 @@ public class Game extends Canvas implements Runnable {
 		width = w;
 		height = h;
 		
-		bezier = new Bezier(new Point(0,100),new Point(50,200), new Point(100,100), 3 );
+		bezier = new Bezier(new Point(0,20),new Point(50,100), new Point(100,20), 20 );
 	}
 	
 	@Override
@@ -39,21 +40,23 @@ public class Game extends Canvas implements Runnable {
 			
 			count+=num;
 			segundo+=num;
-			if (count>=perTick){
-				count=0;
-				fps++;
-				second();
-				update();
-				render();
+				
+				if (count>=perTick){
+					count=0;
+					fps++;
+					second();
+					update();
+					render();
 			}
 			//////////////////////////////////////
-			/*try {
+			try {
 				Thread.sleep(10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}*/
+			}
 			num=System.currentTimeMillis()-startTime;
+			
 		}
 	}
 	
@@ -97,8 +100,9 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 		
 		/////////////////////////////////
+		g.setColor(Color.DARK_GRAY);
+		g.fillRect(0, 0, width, height);
 		bezier.render(g);
-		
 		////////////////////////////////
 		
 		g.dispose();
