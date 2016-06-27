@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable {
 		width = w;
 		height = h;
 		
-		bezier = new Bezier(new Point(0,20),new Point(50,100), new Point(100,20), 20 );
+		bezier = new Bezier(new Point(0,20),new Point(50,100), new Point(100,20), 10 );
 	}
 	
 	@Override
