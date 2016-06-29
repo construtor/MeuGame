@@ -1,12 +1,11 @@
 package com.meujogo.main.resources;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Bezier {
+public abstract class Bezier {
 
 	private Point inicio;
 	private Point controle;
@@ -31,8 +30,8 @@ public class Bezier {
 		retaR.add(inicio);
 		retaS.add(controle);
 		
-		processa(suave);
-		insercaoPontos();
+		//processa(suave);
+		//insercaoPontos();
 	}
 	
 	private void processa(int pontos){
@@ -74,29 +73,9 @@ public class Bezier {
 	public void insercaoPontos(){
 		for (int i=0; i<suave-1; i++){
 			intersecao.add(intersecao(retaR.get(i),retaS.get(i+1),retaR.get(i+1),retaS.get(i+2)));
-			System.out.println(i);
+			
 		}
 	}
 	
-	public void render(Graphics g){
-		
-		//g.drawLine(inicio.x, inicio.y, controle.x, controle.y);
-		//g.drawLine(controle.x, controle.y, fim.x, fim.y);
-		/*for(int i=0; i<retaR.size(); i++){
-			g.setColor(Color.BLUE);
-			g.drawLine((int)retaR.get(i).getX(), (int)retaR.get(i).getY(), (int)retaS.get(i+1).getX(), (int)retaS.get(i+1).getY());
-			
-			g.setColor(Color.CYAN);
-			g.drawString("Inicio", inicio.x, inicio.y);
-			g.drawString("Controle", controle.x, controle.y);
-			g.drawString("Fim", fim.x, fim.y);
-		}*/
-		for(int i=0; i<suave-2;i++){
-			g.setColor(Color.GREEN);
-			//System.out.println(intersecao.size());
-			g.drawLine((int) intersecao.get(i).getX(),(int) intersecao.get(i).getY(),(int) intersecao.get(i+1).getX(),(int) intersecao.get(i+1).getY());
-		}
-		/*Point p = intersecao(inicio,retaS.get(2),retaR.get(2),retaS.get(3));
-		System.out.println("Teste de ponto de interseção: "+Integer.toString((int) p.getX()));*/
-	}
+	public abstract void render(Graphics g);
 }

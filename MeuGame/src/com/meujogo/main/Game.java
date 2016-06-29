@@ -8,6 +8,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import com.meujogo.main.resources.Bezier;
+import com.meujogo.main.resources.Bezier2;
 
 public class Game extends Canvas implements Runnable {
 
@@ -16,15 +17,14 @@ public class Game extends Canvas implements Runnable {
 	private ExecutorService executor;
 	public static int width;
 	public static int height;
-	private Bezier bezier;
+	private Bezier2 linha;
 	
 	public Game(int w, int h){
 		
 		executor = Executors.newFixedThreadPool(1);
 		width = w;
 		height = h;
-		
-		bezier = new Bezier(new Point(0,20),new Point(50,100), new Point(100,20), 10 );
+		linha = new Bezier2(50,50);
 	}
 	
 	@Override
@@ -63,10 +63,11 @@ public class Game extends Canvas implements Runnable {
 	private int fps=0;
 	private int segundo=0;
 	
+	
 	private void second() {
 		
 		if (segundo>=1000){
-			System.out.printf("\tFPS : %d\n",fps);
+			//System.out.printf("\tFPS : %d\n",fps);
 			fps=0;
 			segundo=0;
 		}
@@ -102,17 +103,22 @@ public class Game extends Canvas implements Runnable {
 		/////////////////////////////////
 		g.setColor(Color.DARK_GRAY);
 		g.fillRect(0, 0, width, height);
-		bezier.render(g);
+		linha.render(g);
 		////////////////////////////////
 		
 		g.dispose();
 		bs.show();
 	}
 	
+	private static float t;
+	
+	public static void setT(float t) {
+		Game.t = t;
+	}
+
 	public void update(){
-		//KeyInput
-		///////////////////////////////////////////////////
-				
+		System.out.println(t);
+		linha.update(t);
 		
 	}
 }
