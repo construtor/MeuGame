@@ -24,7 +24,7 @@ public class Game extends Canvas implements Runnable {
 		executor = Executors.newFixedThreadPool(1);
 		width = w;
 		height = h;
-		linha = new Bezier2(50,50);
+		linha = new Bezier2(50,50,7);
 	}
 	
 	@Override
@@ -113,11 +113,12 @@ public class Game extends Canvas implements Runnable {
 	private static float t;
 	
 	public static void setT(float t) {
+		
 		Game.t = t;
 	}
 
 	public void update(){
-		System.out.println(t);
+		
 		linha.update(t);
 		
 	}

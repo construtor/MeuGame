@@ -14,7 +14,7 @@ import javax.swing.event.ChangeListener;
 public class Main extends JFrame implements ChangeListener{
 	
 	private Game game;
-	private static int WIDTH = 600;
+	private static int WIDTH = 400;
 	private static int HEIGHT = WIDTH/4*3;
 	public static Main INSTANCE;
 	private JSlider slider;
